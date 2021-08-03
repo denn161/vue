@@ -8,24 +8,24 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>   
-    <div id="app">
+    <div id="app" v-cloak>
          <div id="header">
-
             <div class="header__inner">
                 <input class="input__search" type="search" placeholder="type here..." v-model="search">
-               <!-- <button class="header__btn" v-on:click="searchHandler">Search product</button>
-              -->
+               <button class="header__btn" v-on:click="openBasket">Basket: <span>{{cart.length}}</span></button>
+             
             </div> 
          </div>
         <div class="products__wrapper">
             <template v-if="isLoading">
                 <template v-if="catalog.length>0">
         <ul class="products__list">
-            <li class="products__item" v-for="good of searchHandler" :key="good.id">
+            <li class="products__item" v-for="(good,idx) of searchHandler" :key="good.id">
                 <span class="products__name">{{good.name}}</span>
                 <img class="products__img" :src="`${good.img}`">
                 <p class="products__text">{{good.descr}}</p>
-                <span class="products__price">{{good.price.toLocaleString()}} ₽ </span>
+                <span class="products__price" @click='addToCart(good)'>{{good.price.toLocaleString()}} ₽ </span>
+            
             </li>
         </ul>    
         </template>           
@@ -46,11 +46,31 @@
                        <img src="img/Spinner.svg" alt="spinner">
                    </div>
                </div>
-           </template>
-     
-        </div>
+           </template>  
+              <div class="basket" id="basket">                
+              <ul class="basket__list" v-if="cart.length">
+             <li class="basket__item" v-for="(good,idx) in cart">
+             <div class="basket__images">
+            <img class="basket__img" :src="`${good.img}`">
+             </div>
+             <div class="basket__info">
+                  <p class="basket__name">{{good.name}}</p>
+                  <p class="basket__price">{{good.price.toLocaleString()}}₽ </p>
+             </div>        
+               
+                  <button class="basket__btn" @click="removeProduct(good)">X</button>
+                      </li>                    
+
+                  </ul>
+                   <div class="basket__error" v-if="!cart.length">
+                       <p>В данный момент коризна пуста.</p>
+                       <p>Добавьте товар</p>
+                   </div>
+              
+              </div>
+        </div>       
     </div>   
-    <div id="basket"></div>
+      
 
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
 <script src="index.js"></script>

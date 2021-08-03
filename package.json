@@ -1,0 +1,23 @@
+{
+  "name": "projectinvue",
+  "version": "1.0.0",
+  "description": "project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/denn161/vue.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/denn161/vue/issues"
+  },
+  "homepage": "https://github.com/denn161/vue#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

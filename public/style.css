@@ -14,13 +14,25 @@
 		0 6px 30px 5px rgba(33,37,41,.04), 
 		0 8px 10px -5px rgba(33,37,41,.1);
 }
-
 *,::before,::after{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+::-webkit-scrollbar {
+	width: 8px;
+}
+::-webkit-scrollbar-thumb {
+	background-color: darkgrey;
+	border-radius: 5px;
+}
+::-webkit-scrollbar-track {
+	background-color: var(--color-white);
+}
 
+[v-cloak]{
+    display: none;
+}
 body{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
@@ -28,8 +40,6 @@ body{
     color: black;
     background-color: var(--color-medium);
 }
-
-
 .products__wrapper{
     width: 100%;
     height: 100vh;    
@@ -101,7 +111,7 @@ body{
     background-color: #fff;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
 }
 .header__btn{
     border: 1px solid transparent;
@@ -159,6 +169,87 @@ border: 1px solid orange;
     color: #fff;
     font-weight: 600;
     font-size: 16px; 
+}
+.basket{
+    position:absolute;
+    right:40px;
+    top:80px;
+    z-index: 2;
+    width:40%;
+   transform:translateY(-3000px);
+    height:80vh;
+    background-color:rgba(71, 66, 66, 0.8);
+    transition: transform .6s ease-in-out;
+}
+.active{
+   transform:translateY(0);
+}
+
+.basket__list{
+    display:flex;
+    flex-direction: column;
+    width:100%;
+    height:100%;   
+    padding:30px;
+    overflow: auto;
+
+}
+
+.basket__error{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform:translate(-50%,-50%);
+    background-color: #a8eb12;
+    width:400px;
+    height:200px;
+    border-radius:20px;
+    text-align: center;
+    color: #224223;
+    text-transform: uppercase;
+    font-weight: 700;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.basket__item{
+ display: flex;  
+ background-color: var(--color-item);
+ box-shadow: var(--box-shadow);
+ border-radius: var(--border-radius); 
+ position: relative;
+ align-items: center;
+ width:70%;
+ height:266px;
+ margin-bottom: 15px;
+}
+.basket__images{
+    margin-left: 30px;
+}
+
+.basket__img{
+   display: block;  
+   object-fit: contain;
+   width:80px; 
+   margin-top: var(--spacing-medium);  
+  
+}
+
+.basket__info{
+    margin-left: 50px;
+}
+.basket__btn{
+ display: block; 
+ border: none; 
+ position:absolute; 
+ right:30px;
+ top: 30px;
+ font-size: 30px;
+ text-align: center;
+ cursor: pointer;
+
+ 
 }
 
 
